@@ -1,0 +1,418 @@
+/*REMARQUE : Le CSS est pensé "Desktop First", i.e. que l'on a décidé de se concentrer sur la version bureau, avec des dimensions plus grandes*/
+
+
+/*Puis ensuite d'ajuster le contenu pour les smartphones (< 576px) et tablettes (< 960px)*/
+
+
+/*SPECIFICATIONS GENERALES*/
+
+
+/*3 types polices utilisées :
+- eras light avec un graissage de police à 400 (regular) (pour le titre du site et l'appellation "Votre panier")
+- calibri bold (pour le reste qui est en gras)
+- calibri regular (pour tout le reste)*/
+
+@font-face {
+    font-family: 'Eras-Light';
+    src: url(fonts/ErasITCbyBT-Book.otf) format("opentype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Calibri';
+    src: url(fonts/Calibri-Regular.ttf) format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Calibri';
+    src: url(fonts/Calibri-Bold.TTF) format("truetype");
+    font-weight: 700;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+/*Sans règle plus précise, tout texte sera gris foncé, en Calibri regular*/
+
+body {
+    background-color: #333;
+    margin: 0px;
+    font-family: 'Calibri', serif;
+    font-weight: 400;
+}
+
+
+/*On centre le site et on obtient des bandes noires si les dimensions de l'écran dépassent 960px*/
+
+.main {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 960px;
+    width: 100%;
+}
+
+
+/*EN-TÊTE : Logo + titre*/
+
+.header-site {
+    position: relative;
+    float: left;
+    height: 175px;
+    width: 70%;
+    background-color: #EAE5DF;
+}
+
+.header-site .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 172px;
+    margin-right: 10px;
+}
+
+.header-site .titre {
+    position: absolute;
+    /*On centre horizontalement et verticalement le titre*/
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 210px;
+    font-size: 30px;
+    font-family: 'Eras-Light', sans-serif;
+    color: #555;
+}
+
+
+/*PARTIE AUTHENTIFICATION / CONNEXION*/
+
+
+/*La partie authentification / connexion ne fonctionne pas, i.e. que les deux boutons ne sont pas fonctionnels.*/
+
+.authentification {
+    float: right;
+    width: 30%;
+    height: 175px;
+    padding-top: 5px;
+    background: #8A5D1D;
+    text-align: center;
+    color: #FFF;
+}
+
+.authentification-mdp,
+.authentification-email {
+    color: white;
+    font-weight: 400;
+}
+
+.authentification-boutons {
+    margin-top: 10px;
+}
+
+
+/*CONTENU PRINCIPAL DU SITE, AFFICHAGE DES FAMILLES OU DES ARTICLES*/
+
+
+/*Tous les articles et familles d'articles ET le panier se retrouvent dans une balise article de class "body" */
+
+
+/*Les familles ou les articles seulement sont dans une div de classe "contenu" */
+
+article.body {
+    height: 415px;
+}
+
+.contenu {
+    clear: both;
+    float: left;
+    overflow: scroll;
+    width: 70%;
+    height: 500px;
+    padding-bottom: 20px;
+    background: #EAE5DF;
+}
+
+
+/*BODY, AFFICHER FAMILLE, url : /index.php*/
+
+.affiche_famille {
+    float: left;
+    color: #555;
+    background-color: white;
+    border: 1px solid #8A5D1D;
+    margin: 10px;
+    padding: 10px;
+}
+
+.famille-img {
+    opacity: 1;
+    transform: opacity .3s
+}
+
+.famille-img:hover {
+    opacity: 0.7;
+}
+
+
+/*BODY, AFFICHER ARTICLE, url :/index.php?famille=id */
+
+
+/*Pour afficher les articles, on considère un tableau d'une ligne à deux colonnes */
+
+
+/*Dans la première colonne : l'image de l'article*/
+
+
+/*Dans la deuxieme colonne : le contenu de l'article, i.e. libelle, detail, pric_ttc*/
+
+.affiche_article {
+    float: left;
+    color: #555;
+    background-color: white;
+    border: 1px solid #8A5D1D;
+    margin: 8px;
+    padding: 10px;
+}
+
+
+/*On aligne tout le contenu de la deuxième colonne du tableau d'un article*/
+
+.table-contenu {
+    vertical-align: middle;
+}
+
+.article-detail {
+    color: rgb(145, 145, 145);
+    font-size: 0.8rem;
+}
+
+.titre_center {
+    text-align: center;
+}
+
+
+/*On stylise le prix de chaque article*/
+
+.article-prix {
+    display: inline-block;
+    color: #780000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 1px;
+    vertical-align: middle;
+    margin-right: 30px;
+    padding: 0;
+}
+
+
+/*PANIER*/
+
+.section-panier {
+    float: right;
+    width: 30%;
+    height: 500px;
+    background: #861825;
+    color: #ffffff;
+    font-size: large;
+    text-align: center;
+    overflow: scroll;
+}
+
+
+/*On affiche la phrase "votre panier" en Eras-Light et un graissage de police un peu plus élevé pour correspondre au mieux à la maquette*/
+
+.votre-panier {
+    font-family: 'Eras-Light', sans-serif;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+
+/*On affiche un petit symbole de caddie à l'aide d'un pseudo-élément 'before' */
+
+.votre-panier::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    margin-right: 7px;
+    background: url(img/panier.gif) center center / contain no-repeat;
+}
+
+
+/*On affiche la barre blanche en dessous de "votre panier" à l'aide d'un pseudo élément 'after' */
+
+.votre-panier::after {
+    content: '';
+    /*display : block pour que la barre se mette bien à la ligne*/
+    display: block;
+    height: 2px;
+    width: 100%;
+    margin-top: 4px;
+    background: #FFF;
+}
+
+
+/*On crée une div de classe "prix_et_bouton" pour pouvoir centrer ces deux élements entre eux*/
+
+.prix_et_bouton {
+    vertical-align: middle;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.prix_et_bouton div.ajust-button {
+    margin: 0;
+}
+
+.panier-table {
+    width: 100%;
+}
+
+
+/*On affiche le nom de chaque article mis au panier en gris et à gauche*/
+
+.panier-libelle {
+    float: left;
+    color: lightgrey;
+}
+
+
+/*On colle le sous-total de chaque article du panier et le total à droite*/
+
+.panier-adroite {
+    float: right;
+}
+
+.panier-total {
+    margin-bottom: 15px;
+}
+
+
+/*On affiche la phrase "votre panier est vide" pour respecter la maquette*/
+
+.panier-vide {
+    color: lightgrey;
+}
+
+
+/*PIED DE PAGE*/
+
+.footer {
+    clear: both;
+    width: 100%;
+    text-align: center;
+    color: white;
+    height: 50px;
+    padding-bottom: 5px;
+    line-height: 1.3em;
+    background: #8A5D1D;
+}
+
+.footer p {
+    padding: 0;
+    margin: 0;
+}
+
+
+/*BOUTONS*/
+
+.myButton {
+    -moz-box-shadow: 0px 10px 9px -7px #404242;
+    -webkit-box-shadow: 0px 10px 9px -7px #404242;
+    box-shadow: 0px 10px 9px -7px #404242;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ff5e7e), color-stop(1, #780000));
+    background: -moz-linear-gradient(top, #ff5e7e 5%, #780000 100%);
+    background: -webkit-linear-gradient(top, #ff5e7e 5%, #780000 100%);
+    background: -o-linear-gradient(top, #ff5e7e 5%, #780000 100%);
+    background: -ms-linear-gradient(top, #ff5e7e 5%, #780000 100%);
+    background: linear-gradient(to bottom, #ff5e7e 5%, #780000 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff5e7e', endColorstr='#780000', GradientType=0);
+    background-color: #ff5e7e;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    border-radius: 40px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+    margin: 5px 10px 5px 10px;
+    padding: 3px 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #4d484d;
+}
+
+.myButton:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #780000), color-stop(1, #ff5e7e));
+    background: -moz-linear-gradient(top, #780000 5%, #ff5e7e 100%);
+    background: -webkit-linear-gradient(top, #780000 5%, #ff5e7e 100%);
+    background: -o-linear-gradient(top, #780000 5%, #ff5e7e 100%);
+    background: -ms-linear-gradient(top, #780000 5%, #ff5e7e 100%);
+    background: linear-gradient(to bottom, #780000 5%, #ff5e7e 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#780000', endColorstr='#ff5e7e', GradientType=0);
+    background-color: #780000;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
+
+
+/* Si la largeur de l'écran est inférieure à 960px, on enlève les bords gris*/
+
+
+/* Si la largeur de l'écran est inférieure à 576px, on met : logo + titre (plus petits) > connexion > contenu > panier > pas de footer */
+
+@media only screen and (max-width:576px) {
+    .header-site {
+        width: 100%;
+        height: 100px;
+    }
+    .header-site .logo {
+        width: 100px;
+        height: auto;
+    }
+    .header-site .titre {
+        left: 110px;
+        font-size: 26px;
+    }
+    .authentification {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .contenu {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .section-panier {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    /*On centre le prix des articles et leur libelle quand on est sur Smartphone, cela semble plus adapté et agréable pour l'utilisateur*/
+    .panier-libelle {
+        margin-left: 30%;
+    }
+    .panier-adroite {
+        margin-right: 30%;
+    }
+    /*Comme demandé par le client, pas de footer lorsque l'on est sur Smartphone*/
+    .footer {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:710px) {
+    /*On adapte correctement la taille de la div "body" pour afficher correctement les articles pour n'importe quelles dimensions*/
+    article.body {
+        height: 580px;
+    }
+}
